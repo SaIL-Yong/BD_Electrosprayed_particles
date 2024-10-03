@@ -1,0 +1,33 @@
+close all;
+clear all;
+clc;
+data1 = load('Exp.mat');
+data2 = load('MSE.mat');
+data3 = load('EMD.mat');
+data4 = load('Sim.mat');
+S = load('colorblind_colormap.mat'); 
+CT = S.colorblind;
+figure;
+hold on;
+plot(data1.x1, data1.y1, 'Color', CT(1,:), 'LineWidth', 2);
+plot(data2.x2, data2.y2, 'Color', CT(6,:), 'LineWidth', 2);
+plot(data3.x3, data3.y3, 'Color', CT(10,:), 'LineWidth', 2);
+plot(data4.x4, data4.y4, 'Color', CT(12,:), 'LineWidth', 2);
+legend('Experimental data', 'Optimization (MSE)', 'Optimization (EMD)', 'Simulation data', ...
+    'FontSize', 24, 'Location', 'northeast', 'EdgeColor', 'none');
+axis square;
+ylim([0 2.5]);
+xlim([0 100]);
+ax = gca;
+ax.XMinorTick = 'on';
+ax.YMinorTick = 'on';
+ax.FontSize = 40;
+ax.XAxis.FontSize = 36;
+ax.YAxis.FontSize = 36;
+ax.LineWidth = 2;
+box on;
+xticks([20 40 60 80 100]);
+xticklabels({'20','40','60','80','100'});
+
+xlabel('r (μm)', 'FontSize', 36);
+ylabel('g(r)', 'FontSize', 36);
